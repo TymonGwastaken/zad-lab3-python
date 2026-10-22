@@ -61,8 +61,8 @@ def normalizuj_miesiac(m):
 
 def pobierz_parametry():
     parser = argparse.ArgumentParser(
-        description="Skrypt do obsługi danych w strukturze katalogów.",
-        epilog="Przykład użycia: python main.py -m styczen luty -d pn-wt pt -p r w -t -c"
+        description="Skrypt do obsługi danych JSON w strukturze katalogów.",
+        epilog="Przykład użycia: python main.py -m styczen luty -d pn-wt pt -p r w -t"
     )
 
     parser.add_argument("-m", "--miesiace", nargs="+", required=True, help="Miesiące")
@@ -71,13 +71,8 @@ def pobierz_parametry():
 
     # Wzajemnie wykluczające się opcje akcji
     g_akcja = parser.add_mutually_exclusive_group()
-    g_akcja.add_argument("-t", "--tworzenie", action="store_true", help="Tworzenie plików")
-    g_akcja.add_argument("-o", "--odczyt", action="store_true", help="Odczyt plików")
-
-    # Wzajemnie wykluczające się opcje formatu
-    g_fmt = parser.add_mutually_exclusive_group()
-    g_fmt.add_argument("-c", "--csv", action="store_true", help="Format CSV")
-    g_fmt.add_argument("-j", "--json", action="store_true", help="Format JSON")
+    g_akcja.add_argument("-t", "--tworzenie", action="store_true", help="Tworzenie plików JSON")
+    g_akcja.add_argument("-o", "--odczyt", action="store_true", help="Odczyt plików JSON")
 
     args = parser.parse_args()
 
@@ -112,8 +107,6 @@ def pobierz_parametry():
 
     if not args.tworzenie and not args.odczyt:
         args.odczyt = True
-    if not args.csv and not args.json:
-        args.csv = True
 
     args.struktura_sciezek = pory_koncowe
     return args
