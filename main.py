@@ -1,5 +1,6 @@
 import argparse
 import unicodedata
+from sciezki import przetworz_sciezki
 
 DNI_MAP = {
     'pn': 'poniedziałek', 'poniedzialek': 'poniedziałek', 'poniedziałek': 'poniedziałek',
@@ -114,8 +115,7 @@ def pobierz_parametry():
 def main():
     args = pobierz_parametry()
     
-    # Przekazanie struktury do modułu Osoby 2:
-    # przetworz_sciezki(args)
+    przetworz_sciezki(args)
 
 if __name__ == "__main__":
     main()
