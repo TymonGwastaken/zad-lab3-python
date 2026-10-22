@@ -44,6 +44,6 @@ def odczytaj_json(sciezka_katalogu):
     except json.JSONDecodeError:
         print(f"Błąd: Plik {sciezka_pliku} nie jest poprawnym plikiem JSON.")
     except ValueError:
-        print(f"Błąd: Wartość czasu w pliku {sciezka_pliku} jest nieprawidłowa
+        print(f"Błąd: Wartość czasu w pliku {sciezka_pliku} jest nieprawidłowa.")
 
     return 0
